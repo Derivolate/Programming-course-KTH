@@ -17,6 +17,6 @@ val = eval_rpn(r_string);
 fprintf(['Result of evaluation: ', num2str(val), '\n']); 
 
 end
-% % we get an infix expression ’( ( 3 + 5 * 1 ) / 8 ) * 14’ with white
+% % we get an infix expression ( ( 3 + 5 * 1 ) / 8 ) * 14 with white
 % spaces between operands. The matlab function strsplit splits the string
 % at the white spaces
