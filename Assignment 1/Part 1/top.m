@@ -6,6 +6,7 @@ function element = top(stack)
 
 % the top element is that of index (end) because we added elements of
 % increasing index to the stack
+
 element=stack(end);
 end
 

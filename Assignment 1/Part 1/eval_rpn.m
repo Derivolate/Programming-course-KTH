@@ -11,9 +11,12 @@ operators = ["*" "/" "+" "-"];
 % Internal variables
 r_array = strsplit(r_string);   % array of symbols in RPN format
 
+% we create logical arrays for each operand, bracket and operator
 log_operands=contains(r_array,operands);
 log_operators=contains(r_array,operators);
-stack=[];
+% A tip is to use the function contains() to check symbols in i_array.
+
+stack=[]; % initialize stack
 
 for i=1:length(r_array)
     if log_operands(i)
@@ -29,14 +32,15 @@ for i=1:length(r_array)
                 case r_array(i)==operators(4)
                     val=str2num(string(stack(end-1)))-str2num(string(top(stack)));
             end %switch
-            stack=[stack(1:end-2) num2str(val)];
-              
-    end %if
-     
-    % A tip is to use the function contains() to check symbols in r_array.
-    
-end
-%disp(stack)
+            stack=[stack(1:end-2) num2str(val)];          
+    end %if   
+end % for
+
+if length(stack)~=1 % the string is not a valid mathematical expression
+    error('check input string: the expression cannot be computed')
+    disp(stack)
+end % if
+
 val = str2num(string(stack(1)));
-end
+end % function eval_rpn
 
