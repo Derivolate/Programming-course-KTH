@@ -1,4 +1,4 @@
-length = 10000;
+length = 10;
 max = length*100;
 unsorted_list = randi([0 max],1,length);
 % unsorted_list = [35,83,59,55,92,28,76,76,38,57];

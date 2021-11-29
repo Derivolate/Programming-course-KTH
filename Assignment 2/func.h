@@ -1,0 +1,1 @@
+float func(float);

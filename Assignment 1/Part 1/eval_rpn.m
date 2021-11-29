@@ -22,24 +22,21 @@ for i=1:length(r_array)
     if log_operands(i)
             stack=push(r_array(i),stack);
     elseif log_operators(i)
+            [num1,stack] = pop(stack);
+            [num2,stack] = pop(stack);
             switch 1
                 case r_array(i)==operators(1)
-                    val=str2num(string(stack(end-1)))*str2num(string(top(stack)));
+                    val = str2num(num1)*str2num(num2);
                 case r_array(i)==operators(2)
-                    val=str2num(string(stack(end-1)))/str2num(string(top(stack)));
+                    val = str2num(num1)/str2num(num2);
                 case r_array(i)==operators(3)
-                    val=str2num(string(stack(end-1)))+str2num(string(top(stack)));
+                    val = str2num(num1)+str2num(num2);
                 case r_array(i)==operators(4)
-                    val=str2num(string(stack(end-1)))-str2num(string(top(stack)));
+                    val = str2num(num1)-str2num(num2);
             end %switch
-            stack=[stack(1:end-2) num2str(val)];          
+            stack = push(val,stack);
     end %if   
 end % for
-
-if length(stack)~=1 % the string is not a valid mathematical expression
-    error('check input string: the expression cannot be computed')
-    disp(stack)
-end % if
 
 val = str2num(string(stack(1)));
 end % function eval_rpn
